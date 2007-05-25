@@ -1,22 +1,21 @@
 %define LANG hu
+%define name man-pages-%LANG
+%define version 0.2.2
+%define release %mkrel 7
 
 Summary: Hungarian manual pages
-Name: man-pages-%LANG
-Version: 0.2.2
-Release: 6mdk
+Name: %{name}
+Version: %{version}
+Release: %{release}
 License: Distributable
 Group: System/Internationalization
 URL: http://www.kde.hu/mlp/man/
 Source: http://www.kde.hu/mlp/man/man_hu_2001_01_05.tar.bz2
-Icon: books-%LANG.xpm
 Buildroot: %_tmppath/%name-root
 BuildRequires: man => 1.5j-8mdk
 Requires: locales-%LANG, man => 1.5j-8mdk
-Prereq: sed grep man
 Autoreq: false
 BuildArch: noarch
-Obsoletes: man-%LANG, manpages-%LANG
-Provides: man-%LANG, manpages-%LANG
 
 %description 
 A large collection of man pages (reference material) from the Linux 
@@ -41,7 +40,6 @@ organized into the following sections:
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%_mandir/%LANG/man{1,2,3,4,5,6,7,8,9,n}
-mkdir -p $RPM_BUILD_ROOT/var/catman/%LANG/cat{1,2,3,4,5,6,7,8,9,n}
 
 find man/hu -type f -name "*.gz" -exec gunzip {} \;
 
@@ -61,17 +59,6 @@ chmod a+x $RPM_BUILD_ROOT/etc/cron.weekly/makewhatis-%LANG.cron
 
 mkdir -p  $RPM_BUILD_ROOT/var/cache/man/%LANG
 
-
-%postun
-# 0 means deleting the package
-if [ "$1" = "0" ]; then
-   ## Force removing of /var/catman/%LANG, if there isn't any man page
-   ## directory /%_mandir/%LANG
-   if [ ! -d %_mandir/%LANG ] ; then
-       rm -rf /var/catman/%LANG
-   fi
-fi
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -82,6 +69,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir /var/cache/man/%LANG
 %config(noreplace) /var/cache/man/%LANG/whatis
 /%_mandir/%LANG/man*
-%attr(755,root,man)/var/catman/%LANG
 %config(noreplace) %attr(755,root,root)/etc/cron.weekly/makewhatis-%LANG.cron
 
