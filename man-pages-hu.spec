@@ -11,6 +11,7 @@ License: Distributable
 Group: System/Internationalization
 URL: http://www.kde.hu/mlp/man/
 Source: http://www.kde.hu/mlp/man/man_hu_2001_01_05.tar.bz2
+Buildroot: %_tmppath/%name-root
 BuildRequires: man => 1.5j-8mdk
 Requires: locales-%LANG, man => 1.5j-8mdk
 Autoreq: false
