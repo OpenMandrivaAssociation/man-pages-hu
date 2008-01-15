@@ -1,7 +1,7 @@
 %define LANG hu
 %define name man-pages-%LANG
 %define version 0.2.2
-%define release %mkrel 7
+%define release %mkrel 8
 
 Summary: Hungarian manual pages
 Name: %{name}
