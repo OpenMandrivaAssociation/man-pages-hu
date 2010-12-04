@@ -59,6 +59,11 @@ chmod a+x $RPM_BUILD_ROOT/etc/cron.weekly/makewhatis-%LANG.cron
 
 mkdir -p  $RPM_BUILD_ROOT/var/cache/man/%LANG
 
+touch $RPM_BUILD_ROOT/var/cache/man/%LANG/whatis
+
+%post
+%create_ghostfile /var/cache/man/%LANG/whatis root root 644
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -67,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 #%doc CHANGES README COPYRIGHT
 %dir %_mandir/%LANG
 %dir /var/cache/man/%LANG
-%config(noreplace) /var/cache/man/%LANG/whatis
+%ghost %config(noreplace) /var/cache/man/%LANG/whatis
 /%_mandir/%LANG/man*
 %config(noreplace) %attr(755,root,root)/etc/cron.weekly/makewhatis-%LANG.cron
 
