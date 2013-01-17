@@ -1,7 +1,7 @@
 %define LNG hu
 %define name man-pages-%LNG
 %define version 0.2.2
-%define release %mkrel 17
+%define release 18
 
 Summary: Hungarian manual pages
 Name: %{name}
@@ -47,12 +47,12 @@ for i in 1 2 3 5 7 8; do
 	cp -adpvrf man/hu/man$i %{buildroot}/%_mandir/%LNG/
 done
 
-LANG=%LNG DESTDIR=%{buildroot} %{_sbindir}/makewhatis %{buildroot}/%_mandir/%LNG
+LANG=%LNG DESTDIR=%{buildroot} %{_bindir}/mandb %{buildroot}/%_mandir/%LNG
 
 mkdir -p %{buildroot}%{_sysconfdir}/cron.weekly
 cat > %{buildroot}%{_sysconfdir}/cron.weekly/makewhatis-%LNG.cron << EOF
 #!/bin/bash
-LANG=%LNG %{_sbindir}/makewhatis %_mandir/%LNG
+LANG=%LNG %{_bindir}/mandb %_mandir/%LNG
 exit 0
 EOF
 chmod a+x %{buildroot}%{_sysconfdir}/cron.weekly/makewhatis-%LNG.cron
