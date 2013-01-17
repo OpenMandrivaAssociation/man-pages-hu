@@ -74,7 +74,7 @@ rm -rf %{buildroot}
 %dir /var/cache/man/%LNG
 %ghost %config(noreplace) /var/cache/man/%LNG/whatis
 %_mandir/%LNG/man*
-%{_mandir{/%{LNG}/cat*
+%{_mandir}/%{LNG}/cat*
 %{_mandir}/%{LNG}/CACHEDIR.TAG*
 %{_mandir}/%{LNG}/index.db*
 #%_mandir/%LNG/whatis
