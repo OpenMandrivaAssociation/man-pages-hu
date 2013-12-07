@@ -1,7 +1,7 @@
 %define LNG hu
 %define name man-pages-%LNG
 %define version 0.2.2
-%define release 21
+%define release 22
 
 Summary: Hungarian manual pages
 Name: %{name}
