@@ -3,7 +3,7 @@
 Summary:	Hungarian manual pages
 Name:		man-pages-%{LNG}
 Version:	0.2.2
-Release:	30
+Release:	31
 License:	Distributable
 Group:		System/Internationalization
 URL:		http://www.kde.hu/mlp/man/
