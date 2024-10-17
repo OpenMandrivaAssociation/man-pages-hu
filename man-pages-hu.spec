@@ -6,7 +6,7 @@ Version:	0.2.2
 Release:	31
 License:	Distributable
 Group:		System/Internationalization
-URL:		http://www.kde.hu/mlp/man/
+URL:		https://www.kde.hu/mlp/man/
 Source:		http://www.kde.hu/mlp/man/man_hu_2001_01_05.tar.bz2
 BuildRequires:	man => 1.5j-8mdk
 Requires:	locales-%LNG, man => 1.5j-8mdk
